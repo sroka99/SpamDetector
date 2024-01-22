@@ -1,18 +1,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-
+import functions as fun
+import function1 as fun1
 
 class mail(BaseModel):
-    subject: str
-    text: str
-    test: int
+            sender: str
+            content: str
 
 app = FastAPI()
 
-def fun(x):
-    return x+1
-
 @app.post("/items/")
 async def create_item(mail: mail):
-    value =  fun(mail.test)
-    return value
+    fun.dodaj_mail(mail.sender,mail.content)
+    return fun1.mail_check([mail.content])

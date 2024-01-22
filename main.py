@@ -2,16 +2,17 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 
-class Item(BaseModel):
-    name: str
-    description: str | None = None
-    price: float
-    tax: float | None = None
-
+class mail(BaseModel):
+    subject: str
+    text: str
+    test: int
 
 app = FastAPI()
 
+def fun(x):
+    return x+1
 
 @app.post("/items/")
-async def create_item(item: Item):
-    return item
+async def create_item(mail: mail):
+    value =  fun(mail.test)
+    return value

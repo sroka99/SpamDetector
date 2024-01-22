@@ -1,0 +1,2 @@
+docker build -t mail_database .
+docker run -p 3306:3306 --name mail_database_containers -d mail_databases
